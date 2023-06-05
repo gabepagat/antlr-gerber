@@ -9,7 +9,7 @@ STAR: '*';
 COMMA: ',';
 
 // Format Specification
-FORMAT_SPECIFICATION: (F S);
+FORMAT_SPECIFICATION: (F S) OPTIONS* XY?;
 OPTIONS: (L | A | I);
 
 // Units

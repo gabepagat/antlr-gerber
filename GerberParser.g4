@@ -24,7 +24,8 @@ comment: COMMENT;
 
 definition: PERCENT defintionType endCommand PERCENT;
 defintionType:
-	stepAndRepeatDefinition
+	formatSpecficationDefinition
+	| stepAndRepeatDefinition
 	| apertureDefinition
 	| layerPolarityDefinition
 	| layerNameDefinition
@@ -36,4 +37,4 @@ layerPolarityDefinition: LAYER_POLARITY POLARITY_TYPE;
 layerNameDefinition: LAYER_NAME;
 stepAndRepeatDefinition: STEP_REPEAT XY STEPS;
 unitsDefinition: SET_UNITS UNITS;
-formatSpecficationDefinition: FORMAT_SPECIFICATION OPTIONS* XY;
+formatSpecficationDefinition: FORMAT_SPECIFICATION OPTIONS* XY?;
