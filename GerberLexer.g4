@@ -8,16 +8,22 @@ PERCENT: '%';
 STAR: '*';
 COMMA: ',';
 
+// Format Specification
+FORMAT_SPECIFICATION: (F S);
+OPTIONS: (L | A | I);
+
 // Units
 SET_UNITS: (M O);
+UNITS: MM | IN;
 MM: (M M);
 IN: (I N);
 
 // Coordinates
 X: 'X';
 Y: 'Y';
-X_COORDINATE: (X INTEGER);
-Y_COORDINATE: (Y INTEGER);
+X_VALUE: (X INTEGER);
+Y_VALUE: (Y INTEGER);
+XY: (X_VALUE Y_VALUE);
 DIMENSIONS: FLOAT (X FLOAT)?;
 
 // G-codes
@@ -52,10 +58,9 @@ LAYER_NAME: (L N) ~('*')*;
 
 // Step and Repeat
 STEP_REPEAT: (S R);
-X_REPEATS: (X INTEGER);
-Y_REPEATS: (Y INTEGER);
 X_STEP_SIZE: (I FLOAT);
 Y_STEP_SIZE: (J FLOAT);
+STEPS: (X_STEP_SIZE Y_STEP_SIZE);
 
 EXIT: M (ZERO? TWO);
 COMMENT: (ASTERISK_AT_START | COMMENT_CODE) .*? '\r'? '\n' -> channel(COMMENTS);

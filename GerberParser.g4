@@ -9,10 +9,9 @@ gerber: comment* definition* command* exit EOF;
 
 dCodes: DRAW_MOVE | CLOSED_MOVE | FLASHING_MOVE;
 
-linearCoordinates: X_COORDINATE Y_COORDINATE;
 apertureSelectCommand: APERTURE_SELECT APERTURE_NAME endCommand;
 linearInterpolationCommand:
-	LINEAR_INTERPOLATION linearCoordinates dCodes endCommand;
+	LINEAR_INTERPOLATION XY dCodes endCommand;
 
 endCommand: STAR;
 exit: EXIT endCommand;
@@ -35,7 +34,6 @@ apertureDefinition:
 	| APERTURE_DEFINE;
 layerPolarityDefinition: LAYER_POLARITY POLARITY_TYPE;
 layerNameDefinition: LAYER_NAME;
-stepAndRepeatDefinition:
-	(STEP_REPEAT) (X_REPEATS Y_REPEATS) (X_STEP_SIZE Y_STEP_SIZE);
-unitsDefinition: SET_UNITS units;
-units: MM | IN;
+stepAndRepeatDefinition: STEP_REPEAT XY STEPS;
+unitsDefinition: SET_UNITS UNITS;
+formatSpecficationDefinition: FORMAT_SPECIFICATION OPTIONS* XY;
